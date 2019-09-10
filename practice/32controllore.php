@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Item;
 class ItemController extends Controller {
 	public function index() {
-		$items = Item::get();
-		return view('item.index', ['items' => $items]);
+	$items = Item::get();
+	return view('item.index', ['items' => $items]);
 	}
 	public function detail(Request $request, $id) {
-		$item = Item::find($id);
-		return view('item.detail', ['item' => $item]);
+		$items = \App\Item::where('id', $id)->get();
+		return view('item.detail', ['items' => $items]);
 	}
 }
+?>
